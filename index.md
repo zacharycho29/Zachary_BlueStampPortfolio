@@ -45,6 +45,10 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 My first milestone focused on building the robot and wiring it together. I screwed each motor into the chassis's bottom frame to ensure a stable, secure hold. Then I connected each of the four motors to a motor driver, which was then wired to an Arduino Uno. The Arduino Uno served as the controller for the motors, and the motor driver bridged the Arduino to the gearbox motors. I then powered the motors by directly connecting a 9V battery to a breadboard's power rails, then using male-to-female jumper wires to connect the breadboard power rails to the motor driver's power input. All of the components on the robot were secured through screws or Velcro tape. I attached the top of the robot chassis and powered the Arduino with another 9V battery, this time using a barrel connector. The robot chassis build tutorial included a file that I downloaded and uploaded to the Arduino. This code was used to test the motors, ensuring that they can be powered synchronously, moving the robot forward, backward, left, and right.
 
+### Challenges
+
+The motors require a lot of power to run all at once, and the breadboard power supply could only supply a maximum of 5V. To ensure that all four motors receieved enough power, all 9V needed to be utilized from the battery. So I cut off the barrel connecter on the battery attachment and stripped the wires to expose the stranded copper wire. I then soldered the stranded wires together so that they can be easily inserted into the breadboard power rails, then I wired it to the motor driver to power all of the motors.
+
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
