@@ -35,9 +35,11 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 ### Summary
 
-
+The second milestone consisted of connecting and configuring the HC05 Bluetooth modules, as well as transmitting accelerometer data to move the robot in certain directions. The first step to configuring the Bluetooth modules was to get them in AT mode, where they can receive AT commands. From there, I input various commands to make the Nano's HC05 the sender, and the Uno's HC05 the receiver. To pair them, I used an AT+ADDR? to find the specific address of the receiver, and an AT+PAIR with that address to pair them. Next, I set them to communicate on the same UART baud rate of 38400. Once they were configured, I tested whether they were actually communicating by sending data from the Nano's HC05 to the Uno's HC05 and observing if the data appeared on the Uno's Serial Monitor. Moving on to the accelerometer, the wiring was relatively simple. The accelerometer measures tilt, orientation, and acceleration. These values are all transmitted to an Arduino Nano, which sends the data through the HC05 Bluetooth module to the receiver on the robot. The Arduino Uno reads these values, and if they pass certain thresholds, it will signal the motor drivers to power specific motors, moving the robot in various directions.
 
 ### Challenges
+
+While configuring and connecting the HC05 Bluetooth Modules was not too difficult, I had issues with actually getting them to communicate. The problem I kept hitting was that the Nano would be sending messages, but the Uno would not be receiving any data. The issue lay in the fact that the Arduino Nano 33 BLE Sense that I received did not output 5V by default; it output 3.3V. Thinking that it output 5V, I wired a voltage divider between my Nano's TX pin and the HC05's RXD pin so that the RXD pin would receive 3.3V, thus avoiding frying the chip. However, since the Nano was already outputting 3.3V, I was lowering the voltage below the threshold needed for the HC05 to work. The simple fix was to just get rid of the voltage divider and wire the Nano's TX pin directly to the HC05's RXD pin. I also encountered a debounce issue with the accelerometer: the signal fluctuated near the threshold angle, causing erratic movement from rapid, opposite-direction commands. Adding a simple debounce timer in the code fixed this by ignoring direction signals that changed too quickly.
 
 # First Milestone
 
