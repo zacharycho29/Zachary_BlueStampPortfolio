@@ -59,16 +59,210 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
+## Testing HC05 Communication Code
+
+### Arduino Nano BLE 33 Sense - Sender
+
 ```c++
+#define BT Serial1   // HC-05 connected to RX1/TX1 (D0/D1)
+
+unsigned long lastSend = 0;
+int counter = 0;
+
 void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
+  Serial.begin(9600);   // USB serial for debugging
+  while (!Serial) { }     // wait for Serial Monitor
+
+  BT.begin(38400);        // must match AT+UART=38400,0,0
+
+  Serial.println("Nano 33 BLE Sense sender ready");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // Send a test message every 1000 ms
+  if (millis() - lastSend >= 1000) {
+    lastSend = millis();
 
+    BT.print("MSG ");
+    BT.print(counter++);
+    BT.print(" TIME ");
+    BT.println(millis());
+
+    Serial.println("Sent message");
+  }
+
+  // Echo anything received from the UNO back to the Serial Monitor
+  while (BT.available()) {
+    char c = BT.read();
+    Serial.write(c);
+  }
+}
+```
+
+### Arduino Uno - Receiver
+
+```c++
+#include <SoftwareSerial.h>
+
+// HC-05 connections on the UNO
+// HC-05 TXD -> D2 (UNO RX)
+// HC-05 RXD <- D3 (UNO TX through 5V->3.3V divider)
+SoftwareSerial BT(2, 3); // RX, TX
+
+void setup() {
+  Serial.begin(9600);  // USB Serial Monitor
+  BT.begin(38400);       // must match AT+UART=38400,0,0
+
+  Serial.println("UNO receiver ready");
+}
+
+void loop() {
+  // Print any data received from the Nano
+  while (BT.available()) {
+    char c = BT.read();
+    Serial.write(c);
+  }
+
+  // Optional: type in Serial Monitor and forward to Nano
+  while (Serial.available()) {
+    char c = Serial.read();
+    BT.write(c);
+  }
+}
+```
+
+## Code for Configuring HC05 Bluetooth Modules
+
+```c++
+void setup() {
+  Serial.begin(9600);
+
+  // Wait for Serial Monitor
+  while (!Serial);
+
+  // HC-05 AT mode baud rate
+  Serial1.begin(38400);
+
+  Serial.println("HC-05 AT Mode Test");
+  Serial.println("Type AT commands below:");
+}
+
+void loop() {
+  // Send Serial Monitor input to HC-05
+  while (Serial.available()) {
+    Serial1.write(Serial.read());
+  }
+
+  // Send HC-05 response to Serial Monitor
+  while (Serial1.available()) {
+    Serial.write(Serial1.read());
+  }
+}
+```
+
+## Code to Test Robot Motors
+
+```c++
+ * After running the code, smart car will go forward 2 seconds, then go backward 2
+ * seconds, then left turn for 2 seconds then right turn for 2 seconds then stop. 
+ * 
+ */
+#define speedPinR 9           //  RIGHT PWM pin connect MODEL-X ENA
+#define RightMotorDirPin1 12  //Right Motor direction pin 1 to MODEL-X IN1
+#define RightMotorDirPin2 11  //Right Motor direction pin 2 to MODEL-X IN2
+#define speedPinL 6           // Left PWM pin connect MODEL-X ENB
+#define LeftMotorDirPin1 7    //Left Motor direction pin 1 to MODEL-X IN3
+#define LeftMotorDirPin2 8    //Left Motor direction pin 1 to MODEL-X IN4
+
+
+/*motor control*/
+void go_Advance(void)  //Forward
+{
+  digitalWrite(RightMotorDirPin1, HIGH);
+  digitalWrite(RightMotorDirPin2, LOW);
+  digitalWrite(LeftMotorDirPin1, HIGH);
+  digitalWrite(LeftMotorDirPin2, LOW);
+  analogWrite(speedPinL, 200);
+  analogWrite(speedPinR, 200);
+}
+void go_Left(int t = 0)  //Turn left
+{
+  digitalWrite(RightMotorDirPin1, HIGH);
+  digitalWrite(RightMotorDirPin2, LOW);
+  digitalWrite(LeftMotorDirPin1, LOW);
+  digitalWrite(LeftMotorDirPin2, HIGH);
+  analogWrite(speedPinL, 200);
+  analogWrite(speedPinR, 200);
+  delay(t);
+}
+void go_Right(int t = 0)  //Turn right
+{
+  digitalWrite(RightMotorDirPin1, LOW);
+  digitalWrite(RightMotorDirPin2, HIGH);
+  digitalWrite(LeftMotorDirPin1, HIGH);
+  digitalWrite(LeftMotorDirPin2, LOW);
+  analogWrite(speedPinL, 200);
+  analogWrite(speedPinR, 200);
+  delay(t);
+}
+void go_Back(int t = 0)  //Reverse
+{
+  digitalWrite(RightMotorDirPin1, LOW);
+  digitalWrite(RightMotorDirPin2, HIGH);
+  digitalWrite(LeftMotorDirPin1, LOW);
+  digitalWrite(LeftMotorDirPin2, HIGH);
+  analogWrite(speedPinL, 200);
+  analogWrite(speedPinR, 200);
+  delay(t);
+}
+void stop_Stop()  //Stop
+{
+  digitalWrite(RightMotorDirPin1, LOW);
+  digitalWrite(RightMotorDirPin2, LOW);
+  digitalWrite(LeftMotorDirPin1, LOW);
+  digitalWrite(LeftMotorDirPin2, LOW);
+}
+/*set motor speed */
+void set_Motorspeed(int speed_L, int speed_R) {
+  analogWrite(speedPinL, speed_L);
+  analogWrite(speedPinR, speed_R);
+}
+
+//Pins initialize
+void init_GPIO() {
+  pinMode(RightMotorDirPin1, OUTPUT);
+  pinMode(RightMotorDirPin2, OUTPUT);
+  pinMode(speedPinL, OUTPUT);
+
+  pinMode(LeftMotorDirPin1, OUTPUT);
+  pinMode(LeftMotorDirPin2, OUTPUT);
+  pinMode(speedPinR, OUTPUT);
+  stop_Stop();
+}
+
+void setup() {
+  init_GPIO();
+
+  go_Advance();  //Forward
+
+  delay(2000);
+
+  go_Back();  //Reverse
+
+  delay(2000);
+
+  go_Left();  //Turn left
+
+  delay(2000);
+
+  go_Right();  //Turn right
+
+  delay(2000);
+
+  stop_Stop();  //Stop
+}
+
+void loop() {
 }
 ```
 
@@ -92,8 +286,6 @@ void loop() {
 
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
+- [Robot Chassis Build Tutorial]([https://trashytuber.github.io/YimingJiaBlueStamp/](https://osoyoo.com/2018/12/07/new-smart-car-lesson1/))
 - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
-
-To watch the BSE tutorial on how to create a portfolio, click here.
