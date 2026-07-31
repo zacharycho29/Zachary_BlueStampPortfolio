@@ -48,7 +48,13 @@ The motors require a lot of power to run all at once, and the breadboard power s
 
 # Schematics 
 
+## Hand Module
+
 ![Headstone Image](HandModule.png)
+
+## Robot Schematic
+
+![Headstone Image](RobotSchematic.png)
 
 # Code
 
@@ -417,3 +423,4 @@ void loop() {
 - [Robot Chassis Build Tutorial]([https://trashytuber.github.io/YimingJiaBlueStamp/](https://osoyoo.com/2018/12/07/new-smart-car-lesson1/))
 - [Wiring Tutorial]([https://sviatil0.github.io/Sviatoslav_BSE/](https://www.youtube.com/watch?v=npIy5UEg34M&t=2s))
 - [ESP32-CAM Setup]([https://arneshkumar.github.io/arneshbluestamp/](https://www.youtube.com/watch?v=g1J_7lx5QEU))
+- [Fritzing ESP32-CAM Part](https://forum.fritzing.org/t/esp32-cam-fritzing-part/8517)
