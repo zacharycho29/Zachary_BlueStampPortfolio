@@ -4,7 +4,7 @@ This portfolio details how I built and modified a robot car that is controlled b
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Zachary C | West Essex High School | Electrical Engineering | Incoming Senior
-```HTML
+```
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)
@@ -13,7 +13,7 @@ This portfolio details how I built and modified a robot car that is controlled b
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-```HTML
+```
 For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
@@ -48,7 +48,7 @@ The motors require a lot of power to run all at once, and the breadboard power s
 
 # Schematics 
 
-
+![Headstone Image](HandModule.png)
 
 # Code
 
