@@ -4,23 +4,22 @@ This portfolio details how I built and modified a robot car that is controlled b
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Zachary C | West Essex High School | Electrical Engineering | Incoming Senior
-
+```HTML
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)
-  
+```
 # Final Milestone
-
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+```HTML
 For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
 - What you hope to learn in the future after everything you've learned at BSE
-
+```
 
 
 # Second Milestone
@@ -48,7 +47,8 @@ My first milestone focused on building the robot and wiring it together. I screw
 The motors require a lot of power to run all at once, and the breadboard power supply could only supply a maximum of 5V. To ensure that all four motors receieved enough power, all 9V needed to be utilized from the battery. So I cut off the barrel connecter on the battery attachment and stripped the wires to expose the stranded copper wire. I then soldered the stranded wires together so that they can be easily inserted into the breadboard power rails, then I wired it to the motor driver to power all of the motors.
 
 # Schematics 
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
+
+
 
 # Code
 
