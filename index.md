@@ -426,6 +426,7 @@ void loop() {
 | 32GB TF Memory Card | Provides offline local storage for custom audio | $14.99 | <a href="https://www.amazon.com/SECUEYE-Memory-Reading-Writing-Security/dp/B0BRSS3LRT/?th=1"> Link </a> |
 | DFPlayer | Plays MP3, WAV, and WMA files directly from a Micro-SD card | $9.90 | <a href="https://www.amazon.com/dp/B089D5NLW1?lv=shuf&channelId=500&plpRedirect=mhFallback&th=1"> Link </a> |
 | 3 Watt 8 Ohm Mini Speakers | Small audio driver that plays sounds | $9.99 | <a href="https://www.amazon.com/Dweii-Loundspeaker-JST-PH2-0-Electronic-Advertising/dp/B0B4D1BN4F/ref=sr_1_2?crid=30102EANUODZW&dib=eyJ2IjoiMSJ9.42Cw_ZRRSBxqTMgl3w94AaKWMB8d2mD1cT2KuO_AhBKYiURflxZLcKRdQuKfg6B-BOTnSt5uItf8dKrJd3vAHSCQ6pUebzC-NnGtUAQvUDZUBdK5qetYUbnyowYbuNDk-Oo5Gaz5AYBDb7bDrFeXmOEYBvM1s4q1i7Cpb8eiAsECLF5H_KSNz6fDqXt01PniAI39YNdQeorXk64QWqoTKHtW2q6vasaWnX4jGCHGSwM.DdKz0OK7ir6OTLfTPQVDhnIQjbCjFQnotM2RxF0Nf6w&dib_tag=se&keywords=8%2Bohm%2B3w%2Bspeaker&qid=1785511908&sprefix=8%2Bohm%2B3W%2Caps%2C322&sr=8-2&th=1"> Link </a> |
+| 5V / 3A Power Bank | Provides sufficient voltage and current for ESP32 wifi connection | $21.99 | <a href="amazon.com/Anker-Portable-Charger-PowerIQ-Battery/dp/B0D5CLSMFB"> Link </a> |
 
 # Other Resources/Examples
 - [Robot Chassis Build Tutorial]([https://trashytuber.github.io/YimingJiaBlueStamp/](https://osoyoo.com/2018/12/07/new-smart-car-lesson1/))
