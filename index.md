@@ -46,7 +46,7 @@ My first milestone focused on building the robot and wiring it together. I screw
 
 ### Challenges
 
-The motors require a lot of power to run all at once, and the breadboard power supply could only supply a maximum of 5V. To ensure that all four motors receieved enough power, all 9V needed to be utilized from the battery. So I cut off the barrel connecter on the battery attachment and stripped the wires to expose the stranded copper wire. I then soldered the stranded wires together so that they can be easily inserted into the breadboard power rails, then I wired it to the motor driver to power all of the motors.
+The motors require a lot of power to run all at once, and the breadboard power supply could only supply a maximum of 5V. To ensure that all four motors received enough power, all 9V needed to be utilized from the battery. So I cut off the barrel connector on the battery attachment and stripped the wires to expose the stranded copper wire. I then soldered the stranded wires together so that they can be easily inserted into the breadboard power rails, then I wired it to the motor driver to power all of the motors.
 
 # Schematics 
 
