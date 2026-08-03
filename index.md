@@ -56,7 +56,7 @@ The motors require a lot of power to run all at once, and the breadboard power s
 
 ## Robot Schematic
 
-![Headstone Image](RobotSchematic.png)
+
 
 # Code
 
