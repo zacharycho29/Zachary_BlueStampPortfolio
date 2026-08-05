@@ -60,7 +60,212 @@ The motors require a lot of power to run all at once, and the breadboard power s
 
 # Code
 
+### Final Robot Code
+
+```c++
+#include <SoftwareSerial.h>
+
+SoftwareSerial BT(2, 3);   // RX, TX
+
+// L298N Pins
+#define ENA 9
+#define IN1 12
+#define IN2 11
+#define IN3 7
+#define IN4 8
+#define ENB 6
+
+const int SPEED = 200;
+
+void setup() {
+
+  Serial.begin(9600);
+  BT.begin(38400);
+
+  pinMode(ENA, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(ENB, OUTPUT);
+
+  stopMotors();
+}
+
+void loop() {
+
+  if (BT.available()) {
+
+    char dir = BT.read();
+
+    Serial.print("Received: ");
+    Serial.println(dir);
+
+    switch (dir) {
+
+      case 'F':
+        forward();
+        break;
+
+      case 'B':
+        backward();
+        break;
+
+      case 'L':
+        left();
+        break;
+
+      case 'R':
+        right();
+        break;
+
+      case 'n':
+        stopMotors();
+        break;
+    }
+  }
+}
+
+void forward() {
+
+  analogWrite(ENA, SPEED);
+  analogWrite(ENB, SPEED);
+
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void backward() {
+
+  analogWrite(ENA, SPEED);
+  analogWrite(ENB, SPEED);
+
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void left() {
+
+  analogWrite(ENA, SPEED);
+  analogWrite(ENB, SPEED);
+
+  // Left wheel backwards
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+
+  // Right wheel forwards
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void right() {
+
+  analogWrite(ENA, SPEED);
+  analogWrite(ENB, SPEED);
+
+  // Left wheel forwards
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+
+  // Right wheel backwards
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void stopMotors() {
+
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
+```
+
+### Final Hand Module Code
+
+```c++
+#include <Wire.h>
+#include <Adafruit_MPU6050.h>
+#include <Adafruit_Sensor.h>
+
+Adafruit_MPU6050 mpu;
+
+const float threshold = 5.0;
+long lastTime = 0;
+
+char lastSent = ' ';
+
+void setup() {
+  Serial.begin(9600);      // USB Serial Monitor
+  Serial1.begin(38400);      // HC-05 on D0/D1
+
+  Wire.begin();
+
+  if (!mpu.begin()) {
+    Serial.println("MPU6050 not found!");
+    while (1);
+  }
+
+  mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
+
+  Serial.println("Ready");
+}
+
+void loop() {
+
+  sensors_event_t accel, gyro, temp;
+  mpu.getEvent(&accel, &gyro, &temp);
+
+  float x = accel.acceleration.x;
+  float y = accel.acceleration.y;
+
+  char currentDirection = 'n';
+
+  if (y > threshold)
+    currentDirection = 'L';
+  else if (y < -threshold)
+    currentDirection = 'R';
+  else if (x > threshold)
+    currentDirection = 'B';
+  else if (x < -threshold)
+    currentDirection = 'F';
+
+  // -------- Debounce --------
+  static char candidate = 'n';
+  static char lastSent = 'n';
+  static unsigned long changeTime = 0;
+
+  if (currentDirection != candidate) {
+    candidate = currentDirection;
+    changeTime = millis();
+  }
+
+  // Only send if the direction has stayed the same
+  // for at least 150 ms
+  if ((millis() - changeTime) > 150 && candidate != lastSent) {
+    Serial1.write(candidate);
+    Serial.print("Sent: ");
+    Serial.println(candidate);
+
+    lastSent = candidate;
+  }
+
+  delay(10);
+}
+```
+
 ### Camera Web Server Code
+
 ```c++
 #include <Arduino.h>
 #include "esp_camera.h"
