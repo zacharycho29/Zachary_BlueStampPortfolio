@@ -634,8 +634,8 @@ void loop() {
 | USB 2.0 to UART Converter | Provides jumper wire connections to the power bank | $9.99 | <a href="[amazon.com/Anker-Portable-Charger-PowerIQ-Battery/dp/B0D5CLSMFB](https://www.amazon.com/dp/B0GWDS3VR2?ref=clp_hp_h_pc&th=1)"> Link </a> |
 
 # Other Resources/Examples
-- [Robot Chassis Build Tutorial]([https://trashytuber.github.io/YimingJiaBlueStamp/](https://osoyoo.com/2018/12/07/new-smart-car-lesson1/))
+- [Robot Chassis Build Tutorial]((https://osoyoo.com/2018/12/07/new-smart-car-lesson1/))
 - [Wiring Tutorial]((https://www.youtube.com/watch?v=npIy5UEg34M&t=2s))
-- [ESP32-CAM Setup]([https://arneshkumar.github.io/arneshbluestamp/](https://www.youtube.com/watch?v=g1J_7lx5QEU))
+- [ESP32-CAM Setup]((https://www.youtube.com/watch?v=g1J_7lx5QEU))
 - [Fritzing ESP32-CAM Part](https://forum.fritzing.org/t/esp32-cam-fritzing-part/8517)
 - [DFPlayer Setup](https://www.youtube.com/watch?v=xYU1l8w_Oe4)
