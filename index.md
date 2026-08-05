@@ -5,11 +5,7 @@ This portfolio details how I built and modified a robot car that is controlled b
 |:--:|:--:|:--:|:--:|
 | Zachary C | West Essex High School | Electrical Engineering | Incoming Senior
 
-```
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
-![Headstone Image](logo.svg)
-```
+![Headstone Image]()
 
 # Final Milestone
 
@@ -49,7 +45,11 @@ The motors require a lot of power to run all at once, and the breadboard power s
 
 # Schematics 
 
-## Hand Module
+## Camera Schematic
+
+![Headstone Image](CameraSchematic.png)
+
+## Hand Module Schematic
 
 ![Headstone Image](HandModule.png)
 
@@ -635,6 +635,7 @@ void loop() {
 
 # Other Resources/Examples
 - [Robot Chassis Build Tutorial]([https://trashytuber.github.io/YimingJiaBlueStamp/](https://osoyoo.com/2018/12/07/new-smart-car-lesson1/))
-- [Wiring Tutorial]([https://sviatil0.github.io/Sviatoslav_BSE/](https://www.youtube.com/watch?v=npIy5UEg34M&t=2s))
+- [Wiring Tutorial]((https://www.youtube.com/watch?v=npIy5UEg34M&t=2s))
 - [ESP32-CAM Setup]([https://arneshkumar.github.io/arneshbluestamp/](https://www.youtube.com/watch?v=g1J_7lx5QEU))
 - [Fritzing ESP32-CAM Part](https://forum.fritzing.org/t/esp32-cam-fritzing-part/8517)
+- [DFPlayer Setup](https://www.youtube.com/watch?v=xYU1l8w_Oe4)
