@@ -15,14 +15,13 @@ This portfolio details how I built and modified a robot car that is controlled b
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-```
-For your final milestone, explain the outcome of your project. Key details to include are:
-- What you've accomplished since your previous milestone
-- What your biggest challenges and triumphs were at BSE
-- A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
-```
+### Summary
 
+The third and final milestone centers arounds the modifications that I decided to add to the base project. Specifically, I landed on adding an ESP32-CAM to stream a video to a website over my local wifi, and a mini DFPlayer alongside a speaker to play custom audios at certain cues. The ESP32-CAM required an FTDI Programmer to upload code to it, and after uploading the code with the camera's "flash mode" enabled by connecting GPIO 0 to the ground pin, I disabled "flash mode" by removing the wires. Then, I reset the board and the Serial Monitor on the Arduino IDE provided a website IP to view the stream. The ESP32-CAM is able to connect to my wifi because I input the credentials into the configuration code, which I censored on this page for privacy reasons. Moving onto the DFPlayer, I uploaded custom audios to a USB flash drive containing a MicroSD card formatted to FAT32. The MicroSD card was then inserted into the DFPlayer, which was then connected to a 3 Watt 8 Ohm speaker through jumper wires.
+
+### Challenges
+
+The first issue that I ran into concerned powering the ESP32-CAM without computer connection. I made the critical error of connecting my breadboard power supply to the wrong power rails on the breadboard, causing components to short circuit, subsequently frying the ESP32-CAM. Thankfully, I had another on hand and after fixing the wiring I ran into no other issues with power. However, a larger issue arose when attempting to implement the mini DFPlayer into the system. The code I was attempting to run initialized two SoftwareSerial ports, one for the HC-05 Bluetooth Module and another for the mini DFPlayer, but only one SoftwareSerial port can actively listen at a time. So when one SoftwareSerial port is listening, the other stop receiving data. How this issue could be resolved was if I used an Arduino Mega, which had multiple hardware Serial ports, but with my current components I decided to leave out the mini DFPlayer.
 
 # Second Milestone
 
