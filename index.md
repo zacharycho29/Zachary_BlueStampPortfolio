@@ -636,6 +636,7 @@ void loop() {
 # Other Resources/Examples
 - [Robot Chassis Build Tutorial](https://osoyoo.com/2018/12/07/new-smart-car-lesson1/)
 - [Wiring Tutorial](https://www.youtube.com/watch?v=npIy5UEg34M&t=2s)
+- [HC-05 Bluetooth Configuration](https://docs.google.com/document/d/1EpnEPulXQwPDSK-nKLohqPjpeXNteP2G/edit)
 - [ESP32-CAM Setup](https://www.youtube.com/watch?v=g1J_7lx5QEU)
 - [Fritzing ESP32-CAM Part](https://forum.fritzing.org/t/esp32-cam-fritzing-part/8517)
 - [DFPlayer Setup](https://www.youtube.com/watch?v=xYU1l8w_Oe4)
