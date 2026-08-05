@@ -5,7 +5,7 @@ This portfolio details how I built and modified a robot car that is controlled b
 |:--:|:--:|:--:|:--:|
 | Zachary C | West Essex High School | Electrical Engineering | Incoming Senior
 
-![Headstone Image]()
+![Headstone Image](WIN_20260805_11_55_08_Pro.jpg)
 
 # Final Milestone
 
