@@ -47,15 +47,15 @@ The motors require a lot of power to run all at once, and the breadboard power s
 
 ## Camera Schematic
 
-![Headstone Image](CameraSchematic.png)
+![Headstone Image](CameraSchematic2.png)
 
 ## Hand Module Schematic
 
-![Headstone Image](HandModule.png)
+![Headstone Image](HandModule2.png)
 
 ## Robot Schematic
 
-![Headstone Image](RobotSchematic2.png)
+![Headstone Image](RobotSchematic3.png)
 
 # Code
 
